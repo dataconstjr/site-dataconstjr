@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_navigation_bar import st_navbar
 import os
 
-
+st.set_page_config(layout='wide')
 pages = ["Quem Somos", "Serviços", "Blog", "Contato"]
 urls = {}
 styles = {
@@ -30,11 +30,8 @@ styles = {
         "text-align" : "center",
     },
     "active": {
-        "background-color": "#E0E0E0",
-        "color": "#F15A24",
-        "font-weight": "normal",
-        "padding": "14px",
-    },
+        "background-color": "rgba(255, 255, 255, 0.25)",
+           },
     "hover":{
         "background-color":"#E0E0E0",
     }
@@ -46,18 +43,41 @@ logo_path = os.path.join(parent_dir, "images/logotipo.svg")
 page = st_navbar(pages, urls=urls, styles=styles, logo_path=logo_path,)
 
 
+col1, col2 = st.columns(2)
 if page == "Quem Somos":
-    st.markdown(
-        '# DataConstJr'
-        )
     
-
-
-
+    st.markdown(
+    """
+    <style>
+    [data-testid="stHorizontalBlock"] {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    [data-testid="stVerticalBlock"] {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: transparent !important;
+        border: none !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.header("DataConst Jr")
 
 
 elif page == "Serviços":
-    st.markdown(
+    with col1:
+        st.markdown(
         """
         Mauris neque dui, scelerisque vel consequat maximus, hendrerit nec
         lorem. Vestibulum suscipit tortor nec gravida imperdiet. Morbi eget ex
@@ -67,7 +87,8 @@ elif page == "Serviços":
         """
     )
 elif page == "Blog":
-    st.markdown(
+    with col1:
+        st.markdown(
         """
         Maecenas mollis, mauris sit amet pretium convallis, massa augue
         scelerisque felis, in sagittis ante risus quis arcu. Nullam eu dolor id
@@ -77,7 +98,8 @@ elif page == "Blog":
         """
     )
 elif page == "Contato":
-    st.markdown(
+    with col1:
+        st.markdown(
         """
         Sed egestas justo vel leo pulvinar fringilla. Nam aliquam metus vitae
         odio aliquam, in laoreet sapien tempus. Sed sit amet mauris quam.
